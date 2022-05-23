@@ -3,7 +3,7 @@ function App() {
 		<div className='App'>
 			<button className='btn'>Hello daisyUI</button>
 		</div>
-	);
+	)
 }
 
-export default App;
+export default App
