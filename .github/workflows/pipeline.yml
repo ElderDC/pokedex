@@ -51,6 +51,7 @@ jobs:
         run: npm run lint
 
   build:
+    needs: [install]
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout repo
