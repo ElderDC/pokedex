@@ -17,7 +17,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
 
-  lint:
+  install:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout repo
@@ -27,6 +27,23 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
+          cache: 'npm'
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+
+  lint:
+    needs: [install]
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
           node-version: 16
       - name: Install dependencies
         run: npm ci
@@ -43,6 +60,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
+          cache: 'npm'
           node-version: 16
       - name: Install dependencies
         run: npm ci
@@ -65,6 +83,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
+          cache: 'npm'
           node-version: 16
       - name: Install dependencies
         run: npm ci
