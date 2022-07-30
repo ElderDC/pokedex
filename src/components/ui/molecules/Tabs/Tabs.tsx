@@ -15,7 +15,7 @@ interface TabsProps {
 	grow?: boolean
 	size: TabSize
 	value: string | number
-	onChange: (value: string | number) => void
+	onChange: (_value: string | number) => void
 }
 
 const Tabs = (props: TabsProps) => {
