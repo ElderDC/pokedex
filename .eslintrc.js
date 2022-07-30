@@ -1,8 +1,8 @@
-// const RULES = {
-// 	OFF: 'off',
-// 	ERROR: 'error',
-// 	WARN: 'warn',
-// }
+const RULES = {
+	OFF: 'off',
+	ERROR: 'error',
+	WARN: 'warn',
+}
 
 module.exports = {
 	env: {
@@ -29,5 +29,13 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react', '@typescript-eslint'],
-	rules: {},
+	rules: {
+		'no-unused-vars': [
+			RULES.WARN,
+			{
+				varsIgnorePattern: '_',
+				argsIgnorePattern: '^_',
+			},
+		],
+	},
 }

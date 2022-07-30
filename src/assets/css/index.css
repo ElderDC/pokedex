@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.btn-outlined {
+		@apply bg-transparent border-current border-2;
+	}
+	.btn-outlined:hover {
+		@apply bg-transparent border-current;
+	}
+	.btn-text {
+		@apply bg-transparent border-0;
+	}
+	.btn-text:hover {
+		@apply bg-transparent border-current;
+	}
+	.btn-outlined::before,
+	.btn-text::before {
+		@apply content-[''] absolute top-0 left-0 w-full h-full bg-current opacity-0 transition;
+	}
+	.btn-outlined:hover::before,
+	.btn-text:hover::before {
+		@apply opacity-10;
+	}
+	.card-head {
+		@apply px-8 pt-8;
+	}
+	.card-actions {
+		@apply px-8 pb-8;
+	}
+	.card.image-full > div {
+		@apply relative z-20 opacity-100;
+	}
+}
+
+@layer utilities {
+	.animation-delay-75 {
+		animation-delay: 75ms;
+	}
+	.animation-delay-300 {
+		animation-delay: 300ms;
+	}
+	.animation-delay-500 {
+		animation-delay: 500ms;
+	}
+	.animation-delay-600 {
+		animation-delay: 600ms;
+	}
+	.animation-delay-1000 {
+		animation-delay: 1000ms;
+	}
+}
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,9 +59,33 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+#root {
+	min-height: 100vh;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+
+::-webkit-scrollbar {
+	@apply w-2 h-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply bg-base-content/80 rounded-full transition;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-base-content;
 }
