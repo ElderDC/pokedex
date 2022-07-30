@@ -3,7 +3,7 @@ export interface BaseModule {
 	name: string
 }
 
-export declare enum PokemonType {
+export enum PokemonType {
 	normal = 'normal',
 	fighting = 'fighting',
 	flying = 'flying',
@@ -26,7 +26,7 @@ export declare enum PokemonType {
 	shadow = 'shadow',
 }
 
-export declare enum EvolutionDetail {
+export enum EvolutionDetail {
 	minLevel = 'minLevel',
 	minAffection = 'minAffection',
 	minBeauty = 'minBeauty',
@@ -46,17 +46,17 @@ export declare enum EvolutionDetail {
 	tradeSpecies = 'tradeSpecies',
 }
 
-export declare enum EvolutionTrigger {
-	'level-up' = 'level-up',
-	'trade' = 'trade',
-	'use-item' = 'use-item',
-	'shed' = 'shed',
-	'spin' = 'spin',
-	'tower-of-darkness' = 'tower-of-darkness',
-	'tower-of-waters' = 'tower-of-waters',
-	'three-critical-hits' = 'three-critical-hits',
-	'take-damage' = 'take-damage',
-	'other' = 'other',
+export enum EvolutionTrigger {
+	levelUp = 'level-up',
+	trade = 'trade',
+	useItem = 'use-item',
+	shed = 'shed',
+	spin = 'spin',
+	towerOfDarkness = 'tower-of-darkness',
+	towerOfWaters = 'tower-of-waters',
+	threeCriticalHits = 'three-critical-hits',
+	takeDamage = 'take-damage',
+	other = 'other',
 }
 
 export interface PokemonStat {
