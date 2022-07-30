@@ -41,15 +41,17 @@ const Tabs = (props: TabsProps) => {
 	return (
 		<div className={tabsClass}>
 			{React.Children.map(children, (child) => {
-				const tabValue = child.props?.value
-				const childCloned = React.cloneElement(child, {
-					active: value === tabValue,
-					bordered,
-					grow,
-					size,
-					onClick: (payload: string | number) => handleTabClick(payload),
-				})
-				return childCloned
+				if (React.isValidElement(child)) {
+					const tabValue = child.props?.value
+					const childCloned = React.cloneElement(child, {
+						active: value === tabValue,
+						bordered,
+						grow,
+						size,
+						onClick: (payload: string | number) => handleTabClick(payload),
+					})
+					return childCloned
+				}
 			})}
 		</div>
 	)
