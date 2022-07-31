@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export interface DividerProps {
+type DividerProps = {
 	children?: undefined | React.ReactNode | React.ReactNode[]
 	className?: string
 	horizontal?: boolean
@@ -10,14 +10,18 @@ export interface DividerProps {
 }
 
 const Divider = (props: DividerProps) => {
-	const { children, className, horizontal, vertical } = props
+	const { children, className, horizontal, vertical, style } = props
 
 	const dividerClass = classNames('divider', className, {
 		'divider-horizontal': horizontal,
 		'divider-vertical': vertical,
 	})
 
-	return <div className={dividerClass}>{children}</div>
+	return (
+		<div className={dividerClass} style={style}>
+			{children}
+		</div>
+	)
 }
 
 export default Divider

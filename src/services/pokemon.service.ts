@@ -1,21 +1,20 @@
 import { PokemonClient, EvolutionClient } from 'pokenode-ts'
 
+const pokemonClient = new PokemonClient()
+const evolutionClient = new EvolutionClient()
+
 export const listPokemons = (offset: number, limit: number) => {
-	const api = new PokemonClient()
-	return api.listPokemons(offset, limit)
+	return pokemonClient.listPokemons(offset, limit)
 }
 
 export const getPokemon = (payload: string) => {
-	const api = new PokemonClient()
-	return api.getPokemonByName(payload)
+	return pokemonClient.getPokemonByName(payload)
 }
 
 export const getPokemonSpecies = (payload: string) => {
-	const api = new PokemonClient()
-	return api.getPokemonSpeciesByName(payload)
+	return pokemonClient.getPokemonSpeciesByName(payload)
 }
 
 export const getEvolutionChain = (payload: number) => {
-	const api = new EvolutionClient()
-	return api.getEvolutionChainById(payload)
+	return evolutionClient.getEvolutionChainById(payload)
 }

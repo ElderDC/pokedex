@@ -3,15 +3,11 @@ import classNames from 'classnames'
 import Ripple from 'src/components/ui/atoms/Ripple'
 import { Link, To } from 'react-router-dom'
 
-const noop = (): false => {
-	return false
-}
-
 type Handler = (_event: React.MouseEvent) => void
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg'
 
-export interface ButtonProps {
+type ButtonProps = {
 	block?: boolean
 	children: undefined | React.ReactNode | React.ReactNode[]
 	circle?: boolean
@@ -31,6 +27,10 @@ export interface ButtonProps {
 	onMouseUp?: Handler
 }
 
+const noop = (): false => {
+	return false
+}
+
 const sizeOptions: Record<ButtonSize, string> = {
 	xs: 'badge-xs',
 	sm: 'badge-sm',
@@ -40,29 +40,28 @@ const sizeOptions: Record<ButtonSize, string> = {
 
 const Button = React.forwardRef<any, ButtonProps>(function Button(props, ref) {
 	const {
-		block,
+		block = false,
 		children,
 		circle,
 		className,
 		href,
-		ghost,
+		ghost = false,
 		outlined,
-		size,
+		size = 'md',
 		style,
 		square,
-		text,
+		text = false,
 		to,
-		type,
+		type = 'button',
 		onClick = noop,
 		onDoubleClick = noop,
 		onMouseDown = noop,
 		onMouseUp = noop,
 	} = props
 
-	const getButtonSize = (size: ButtonSize = 'md'): string => {
+	const getButtonSize = (size: ButtonSize): string => {
 		return sizeOptions[size]
 	}
-
 	const handleClick = (event: React.MouseEvent): void => {
 		onClick(event)
 	}
@@ -138,19 +137,5 @@ const Button = React.forwardRef<any, ButtonProps>(function Button(props, ref) {
 		</button>
 	)
 })
-
-Button.defaultProps = {
-	block: false,
-	className: '',
-	ghost: false,
-	size: 'md',
-	style: {},
-	text: false,
-	type: 'button',
-	onClick: noop,
-	onDoubleClick: noop,
-	onMouseDown: noop,
-	onMouseUp: noop,
-}
 
 export default Button
