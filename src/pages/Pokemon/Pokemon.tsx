@@ -1,25 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import {
-	Pokemon,
-	PokemonEvolution,
-	PokemonSprecies,
-} from 'src/models/pokemon.model'
-import {
-	getEvolutionChain,
-	getPokemon,
-	getPokemonSpecies,
-} from 'src/services/pokemon.service'
-import { createPokemonAdapter } from 'src/adapters/pokemon.adapter'
-import {
-	createEvolutionChainAdapter,
-	createListEvolutionChainAdapter,
-} from 'src/adapters/evolution.adapter'
-import {
-	getPokemonIdFormated,
-	getPokemonTypeBackground,
-	ruleOfThree,
-} from 'src/utilities'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
 import { FaArrowLeft } from 'react-icons/fa'
 import classNames from 'classnames'
@@ -30,139 +10,32 @@ import AnimatePage from 'src/components/AnimatePage'
 import Tabs from 'src/components/ui/molecules/Tabs'
 import Tab from 'src/components/ui/atoms/Tab'
 import TabPanels from 'src/components/ui/molecules/TabPanels'
-import TabPanel from 'src/components/ui/atoms/TabPanel/TabPanel'
-import Progress from 'src/components/ui/atoms/Progress'
-import EvolutionChain from 'src/components/Pokemon/EvolutionChain'
-import Divider from 'src/components/ui/atoms/Divider'
-import { createSpeciesAdapter } from 'src/adapters/species.adapter'
+import { useGetPokemonSpecies } from './hooks/useGetPokemonSpecies'
+import { useGetPokemon } from 'src/components/PokemonCard/hooks/useGetPokemon'
+import { useGetEvolutionChain } from './hooks/useGetEvolutionChain'
+import TabAbout from './components/TabAbout'
+import TabStats from './components/TabStats'
+import TabEvolutions from './components/TabEvolutions'
+import { getPokemonIdFormated, getPokemonTypeBackground } from 'src/utilities'
 
 const PokemonDetail = () => {
-	const navigate = useNavigate()
-	const { pokemon } = useParams()
-	const [isLoading, setIsLoading] = useState(true)
+	const { pokemon = '' } = useParams()
 	const [activeTab, setActiveTab] = useState<string | number>(0)
-	const [totalStats, setTotalStats] = useState<number>(0)
-	const [totalValueStats, setTotalValueStats] = useState<number>(0)
-	const [pokemonData, setPokemonData] = useState<Pokemon>({} as Pokemon)
-	const [speciesData, setSpeciesData] = useState<PokemonSprecies>(
-		{} as PokemonSprecies
-	)
-	const [evolutionData, setEvolutionData] = useState<PokemonEvolution>(
-		{} as PokemonEvolution
-	)
-	const [evolutionPokemons, setEvolutionPokemons] = useState<
-		Record<string, Pokemon>
-	>({})
+	const [evolutionChainId, setEvolutionChainId] = useState<number | null>(null)
 
-	useEffect(() => {
-		if (pokemon) {
-			fetchPokemon(pokemon)
-			fetchPokemonSpecies(pokemon)
-		}
-	}, [pokemon])
+	const [pokemonData, isLoading] = useGetPokemon(pokemon)
+	const [speciesData] = useGetPokemonSpecies(pokemon)
+	const [evolutionData, evolutionPokemons] =
+		useGetEvolutionChain(evolutionChainId)
 
 	useEffect(() => {
 		if (speciesData.evolutionChainId) {
-			fetchEvolutionChain(speciesData.evolutionChainId)
+			setEvolutionChainId(speciesData.evolutionChainId)
 		}
 	}, [speciesData])
 
-	const fetchPokemon = async (data: string) => {
-		try {
-			setIsLoading(true)
-			const response = await getPokemon(data)
-			const pokemonAdapted = createPokemonAdapter(response)
-			setPokemonData(pokemonAdapted)
-			setTotalStats(pokemonAdapted.stats.length)
-			setTotalValueStats(
-				pokemonAdapted.stats.reduce(
-					(accumulator, currentValue) => accumulator + currentValue.value,
-					0
-				)
-			)
-		} catch (error: any) {
-			if (error?.response?.status === 404) {
-				navigate('/not-found')
-			}
-		} finally {
-			setIsLoading(false)
-		}
-	}
-
-	const fetchPokemonSpecies = async (data: string) => {
-		try {
-			const responseSpecies = await getPokemonSpecies(data)
-			const speciesAdapted = createSpeciesAdapter(responseSpecies)
-			setSpeciesData(speciesAdapted)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
-	const fetchEvolutionChain = async (data: number) => {
-		try {
-			const responseEvolutionChain = await getEvolutionChain(data)
-			const evolutionChainAdapted = createEvolutionChainAdapter(
-				responseEvolutionChain.chain
-			)
-			const listEvolutionChainAdapted = createListEvolutionChainAdapter(
-				responseEvolutionChain.chain
-			)
-			const evolutionPokemons = await Promise.all(
-				listEvolutionChainAdapted.map(async (element) => {
-					const pokemon = await getPokemon(element)
-					const simplePokemon = createPokemonAdapter(pokemon)
-					return simplePokemon
-				})
-			)
-			const evolutionPokemonsObject = evolutionPokemons.reduce(
-				(object, element) => ({ ...object, [element.name]: element }),
-				{}
-			)
-			setEvolutionData(evolutionChainAdapted)
-			setEvolutionPokemons(evolutionPokemonsObject)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
 	const handleChangeTab = (value: string | number) => {
 		setActiveTab(value)
-	}
-
-	const getColorStat = (value: number, max: number): string => {
-		const statProgress = ruleOfThree(value, max)
-
-		if (statProgress >= 66) {
-			return 'bg-green-500'
-		} else if (statProgress >= 33) {
-			return 'bg-amber-500'
-		} else {
-			return 'bg-red-500'
-		}
-	}
-
-	const renderEvolutionChain = (
-		data: PokemonEvolution
-	): undefined | React.ReactNode | React.ReactNode[] => {
-		const { name, evolutions = [] } = data
-		const pokemonFrom = evolutionPokemons[name]
-		return evolutions.map((item: PokemonEvolution, index: number) => {
-			const pokemonTo = evolutionPokemons[item.name]
-			const showDivider =
-				index + 1 < evolutions.length || item.evolutions?.length > 0
-			return (
-				<>
-					<EvolutionChain
-						pokemonFrom={pokemonFrom}
-						pokemonTo={pokemonTo}
-						details={item.details}
-					/>
-					{showDivider && <Divider />}
-					{renderEvolutionChain(item)}
-				</>
-			)
-		})
 	}
 
 	return (
@@ -259,84 +132,17 @@ const PokemonDetail = () => {
 								{/* <Tab value={3}>Moves</Tab> */}
 							</Tabs>
 							<TabPanels value={activeTab}>
-								<TabPanel value={0} className='p-8 space-y-4'>
-									<div>
-										<Text>{speciesData.flavorText}</Text>
-									</div>
-									<div className='grid gap-4 grid-cols-3'>
-										<Text weight='medium'>Species</Text>
-										<Text className='col-span-2' weight='medium'>
-											{speciesData.genera}
-										</Text>
-									</div>
-									<div className='grid gap-4 grid-cols-3'>
-										<Text weight='medium'>Height</Text>
-										<Text className='col-span-2' weight='medium'>
-											{(pokemonData.height * 0.1).toFixed(2)} m
-										</Text>
-									</div>
-									<div className='grid gap-4 grid-cols-3'>
-										<Text weight='medium'>Weight</Text>
-										<Text className='col-span-2' weight='medium'>
-											{(pokemonData.weight * 0.1).toFixed(2)} kg
-										</Text>
-									</div>
-									<div className='grid gap-4 grid-cols-3'>
-										<Text weight='medium'>Abilities</Text>
-										<Text className='col-span-2' weight='medium'>
-											{pokemonData.abilities.join(', ')}
-										</Text>
-									</div>
-								</TabPanel>
-								<TabPanel value={1} className='p-8 space-y-4'>
-									{pokemonData.stats.map((stat) => (
-										<div key={stat.name} className='grid gap-4 grid-cols-3'>
-											<Text weight='medium' transform='capitalize'>
-												{stat.name}
-											</Text>
-											<div className='col-span-2 flex items-center'>
-												<Text
-													className='w-10 mr-4'
-													align='right'
-													weight='medium'
-												>
-													{stat.value}
-												</Text>
-												<Progress
-													value={stat.value}
-													color={getColorStat(stat.value, 100)}
-													rounded
-												></Progress>
-											</div>
-										</div>
-									))}
-									<div className='grid gap-4 grid-cols-3'>
-										<Text weight='medium' transform='capitalize'>
-											Total
-										</Text>
-										<div className='col-span-2 flex items-center'>
-											<Text className='w-10 mr-4' align='right' weight='medium'>
-												{totalValueStats}
-											</Text>
-											<Progress
-												value={totalValueStats}
-												max={totalStats * 100}
-												color={getColorStat(totalValueStats, totalStats * 100)}
-												rounded
-											></Progress>
-										</div>
-									</div>
-								</TabPanel>
-								<TabPanel value={2} className='p-8'>
-									<div className='mb-8'>
-										<Text size='subtitle1' weight='bold'>
-											Evolution chain
-										</Text>
-									</div>
-									<div className='space-y-4'>
-										{renderEvolutionChain(evolutionData)}
-									</div>
-								</TabPanel>
+								<TabAbout
+									value={0}
+									pokemon={pokemonData}
+									species={speciesData}
+								/>
+								<TabStats value={1} pokemon={pokemonData} />
+								<TabEvolutions
+									value={2}
+									evolution={evolutionData}
+									pokemons={evolutionPokemons}
+								/>
 							</TabPanels>
 						</div>
 					</div>

@@ -2,12 +2,12 @@ import { PokemonEvolution } from 'src/models/pokemon.model'
 
 export const createEvolutionChainAdapter = (data: any): PokemonEvolution => {
 	const { species, evolves_to: evolves, evolution_details: details } = data
-	console.log(details)
+	const evolutions = evolves.map((element: any) =>
+		createEvolutionChainAdapter(element)
+	)
 	const currentEvolution: PokemonEvolution = {
 		name: species.name,
-		evolutions: evolves.map((element: any) =>
-			createEvolutionChainAdapter(element)
-		),
+		evolutions,
 		details: details.map((element: any) => ({
 			gender: element.gender,
 			heldItem: element.held_item,

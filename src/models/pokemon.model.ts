@@ -91,7 +91,7 @@ export interface PokemonEvolution {
 	details: PokemonEvolutionDetails[]
 }
 
-export interface PokemonSprecies {
+export interface PokemonSpecies {
 	baseHappiness: number
 	captureRate: number
 	eggGroups: BaseModule[]

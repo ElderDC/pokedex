@@ -8,7 +8,7 @@ interface EvolutionChainProps {
 	details: PokemonEvolutionDetails[]
 }
 
-const EvolutionChain = (props: EvolutionChainProps) => {
+const EvolutionChainItem = (props: EvolutionChainProps) => {
 	const { pokemonFrom, pokemonTo, details } = props
 
 	return (
@@ -20,4 +20,4 @@ const EvolutionChain = (props: EvolutionChainProps) => {
 	)
 }
 
-export default EvolutionChain
+export default EvolutionChainItem
