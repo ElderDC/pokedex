@@ -5,7 +5,7 @@ const noop = (): false => {
 	return false
 }
 
-type Handler = (event: React.MouseEvent) => void
+type Handler = (_event: React.MouseEvent) => void
 
 interface CardHeadPops {
 	children?: undefined | React.ReactNode | React.ReactNode[]

@@ -37,7 +37,7 @@ const Progress = (props: ProgressProps) => {
 	}
 
 	useEffect(() => {
-		setprogressValue((value * 100) / max)
+		setprogressValue((value * 100) / (max || 100))
 	}, [value])
 
 	return (

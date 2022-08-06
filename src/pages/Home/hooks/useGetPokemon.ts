@@ -11,6 +11,7 @@ export function useGetPokemon(pokemon: string): [Pokemon, boolean] {
 		getPokemon(pokemon)
 			.then((data) => createPokemonAdapter(data))
 			.then((data) => setPokemonData(data))
+			.catch((error) => console.log(error))
 			.finally(() => setIsLoading(false))
 	}, [pokemon])
 

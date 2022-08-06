@@ -11,10 +11,10 @@ import Tabs from 'src/components/ui/molecules/Tabs'
 import Tab from 'src/components/ui/atoms/Tab'
 import TabPanels from 'src/components/ui/molecules/TabPanels'
 import { useGetPokemonSpecies } from './hooks/useGetPokemonSpecies'
-import { useGetPokemon } from 'src/components/PokemonCard/hooks/useGetPokemon'
-import { useGetEvolutionChain } from './hooks/useGetEvolutionChain'
-import TabAbout from './components/TabAbout'
-import TabStats from './components/TabStats'
+import { useGetPokemon } from 'src/pages/Pokemon/hooks/useGetPokemon'
+import { useGetEvolutionChain } from 'src/pages/Pokemon/hooks/useGetEvolutionChain'
+import TabAbout from 'src/pages/Pokemon/components/TabAbout'
+import TabStats from 'src/pages/Pokemon/components/TabStats'
 import TabEvolutions from './components/TabEvolutions'
 import { getPokemonIdFormated, getPokemonTypeBackground } from 'src/utilities'
 
@@ -137,7 +137,7 @@ const PokemonDetail = () => {
 									pokemon={pokemonData}
 									species={speciesData}
 								/>
-								<TabStats value={1} pokemon={pokemonData} />
+								<TabStats value={1} stats={pokemonData.stats} />
 								<TabEvolutions
 									value={2}
 									evolution={evolutionData}

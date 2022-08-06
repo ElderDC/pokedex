@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import Ripple from '../Ripple'
 
 const noop = (): false => {
 	return false

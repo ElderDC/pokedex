@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useGetPokemon } from './hooks/useGetPokemon'
+import { useGetPokemon } from '../../hooks/useGetPokemon'
 import { getPokemonIdFormated, getPokemonTypeBackground } from 'src/utilities'
 import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
 import Babge from 'src/components/ui/atoms/Babge'

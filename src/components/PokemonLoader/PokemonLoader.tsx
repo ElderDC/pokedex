@@ -1,8 +1,8 @@
-import classNames from 'classnames'
 import { LegacyRef } from 'react'
+import classNames from 'classnames'
 import PokeballIcon from 'src/assets/svg/pokeball.svg'
 
-interface PokemonLoaderProps {
+type PokemonLoaderProps = {
 	loading: boolean
 	ref: LegacyRef<HTMLDivElement>
 }

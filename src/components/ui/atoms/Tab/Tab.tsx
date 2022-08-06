@@ -17,7 +17,7 @@ interface TabProps {
 	active: boolean
 	size: TabSize
 	value: string | number
-	onClick: (value: string | number) => void
+	onClick: (_value: string | number) => void
 }
 
 const sizeOptions: Record<TabSize, string> = {

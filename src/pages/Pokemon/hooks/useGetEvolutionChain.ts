@@ -14,7 +14,7 @@ export function useGetEvolutionChain(
 	const [pokemons, setPokemons] = useState<Record<string, Pokemon>>({})
 
 	useEffect(() => {
-		payload && fetchEvolutionChain(payload)
+		if (payload) fetchEvolutionChain(payload)
 	}, [payload])
 
 	const fetchEvolutionChain = async (data: number) => {

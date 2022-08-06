@@ -9,7 +9,11 @@ interface TabPanelProps {
 const TabPanel = (props: TabPanelProps) => {
 	const { className, children, value } = props
 
-	return <div className={className}>{children}</div>
+	return (
+		<div data-value={value} className={className}>
+			{children}
+		</div>
+	)
 }
 
 export default TabPanel

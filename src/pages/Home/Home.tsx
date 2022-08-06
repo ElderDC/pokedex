@@ -7,7 +7,7 @@ import { joinDataToSearch } from 'src/utilities'
 import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
 import classNames from 'classnames'
 import AnimatePage from 'src/components/AnimatePage'
-import PokemonCard from 'src/components/PokemonCard'
+import PokemonCard from 'src/pages/Home/components/PokemonCard'
 import PokemonIcon from 'src/assets/svg/pokemon.svg'
 import VirtualScroll from 'src/components/VirtualScroll'
 
