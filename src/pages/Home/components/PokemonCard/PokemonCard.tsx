@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useGetPokemon } from '../../hooks/useGetPokemon'
-import { getPokemonIdFormated, getPokemonTypeBackground } from 'src/utilities'
+import {
+	getPokemonIdFormated,
+	getPokemonTypeBackground,
+	replaceRouteParams,
+} from 'src/utilities'
 import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
 import Babge from 'src/components/ui/atoms/Babge'
 import Card from 'src/components/ui/atoms/Card'
@@ -9,8 +13,9 @@ import CardBody from 'src/components/ui/atoms/CardBody'
 import Ripple from 'src/components/ui/atoms/Ripple'
 import Text from 'src/components/ui/atoms/Text'
 import PokemonCardLoading from '../PokemonCardLoading'
+import { PublicRoutes } from 'src/models/routes.model'
 
-type PokemonCardProps = {
+interface PokemonCardProps {
 	pokemon: string
 }
 
@@ -22,8 +27,10 @@ const PokemonCard = (props: PokemonCardProps) => {
 		return <PokemonCardLoading />
 	}
 
+	const link = replaceRouteParams(PublicRoutes.POKEMON, { pokemon })
+
 	return (
-		<Link to={`/pokemon/${pokemon}`}>
+		<Link to={link} replace={true}>
 			<motion.div whileHover={{ scale: 1.1, zIndex: 10 }}>
 				<Card
 					className='cursor-pointer text-white'

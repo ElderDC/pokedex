@@ -2,7 +2,7 @@ import Progress from 'src/components/ui/atoms/Progress'
 import Text from 'src/components/ui/atoms/Text'
 import { getColorStat } from 'src/utilities'
 
-type StatItemProps = {
+interface StatItemProps {
 	max?: number
 	name: string
 	value: number

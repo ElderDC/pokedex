@@ -7,7 +7,7 @@ type Handler = (_event: React.MouseEvent) => void
 
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg'
 
-type ButtonProps = {
+interface ButtonProps {
 	block?: boolean
 	children: undefined | React.ReactNode | React.ReactNode[]
 	circle?: boolean

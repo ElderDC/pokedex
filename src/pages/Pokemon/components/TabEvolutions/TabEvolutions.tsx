@@ -1,41 +1,54 @@
-import React from 'react'
-import { Pokemon, PokemonEvolution } from 'src/models/pokemon.model'
-import Divider from 'src/components/ui/atoms/Divider'
+import {
+	Pokemon,
+	PokemonEvolution,
+	PokemonEvolutionDetails,
+} from 'src/models/pokemon.model'
 import TabPanel from 'src/components/ui/atoms/TabPanel'
 import Text from 'src/components/ui/atoms/Text'
-import EvolutionChainItem from '../EvolutionChainItem'
+import EvolutionChainItem from 'src/pages/Pokemon/components/EvolutionChainItem'
 
-type TabEvolutionsProps = {
+interface TabEvolutionsProps {
 	value: number | string
 	evolution: PokemonEvolution
 	pokemons: Record<string, Pokemon>
 }
 
+type EvolutionChain = {
+	pokemonFrom: Pokemon
+	pokemonTo: Pokemon
+	details: PokemonEvolutionDetails[]
+}
+
+const formatEvolutionChain = (
+	data: PokemonEvolution,
+	pokemons: Record<string, Pokemon>,
+	newArray: EvolutionChain[] = []
+) => {
+	const { name, evolutions = [] } = data
+
+	const pokemonFrom = pokemons[name]
+
+	evolutions.forEach((item) => {
+		const pokemonTo = pokemons[item.name]
+
+		newArray.push({
+			pokemonFrom,
+			pokemonTo,
+			details: item.details,
+		})
+
+		if (item.evolutions.length) {
+			formatEvolutionChain(item, pokemons, newArray)
+		}
+	})
+
+	return newArray
+}
+
 const TabEvolutions = (props: TabEvolutionsProps) => {
 	const { value, evolution, pokemons } = props
 
-	const renderEvolutionChain = (
-		data: PokemonEvolution
-	): undefined | React.ReactNode | React.ReactNode[] => {
-		const { name, evolutions = [] } = data
-		const pokemonFrom = pokemons[name]
-		return evolutions.map((item: PokemonEvolution, index: number) => {
-			const pokemonTo = pokemons[item.name]
-			const showDivider =
-				index + 1 < evolutions.length || item.evolutions?.length > 0
-			return (
-				<>
-					<EvolutionChainItem
-						pokemonFrom={pokemonFrom}
-						pokemonTo={pokemonTo}
-						details={item.details}
-					/>
-					{showDivider && <Divider />}
-					{renderEvolutionChain(item)}
-				</>
-			)
-		})
-	}
+	const formatedEvolutionChain = formatEvolutionChain(evolution, pokemons)
 
 	return (
 		<TabPanel value={value} className='p-8'>
@@ -44,7 +57,21 @@ const TabEvolutions = (props: TabEvolutionsProps) => {
 					Evolution chain
 				</Text>
 			</div>
-			<div className='space-y-4'>{renderEvolutionChain(evolution)}</div>
+			<div className='space-y-12'>
+				{formatedEvolutionChain.length < 1 && (
+					<Text>No se encontraron evoluciones</Text>
+				)}
+				{formatedEvolutionChain.map(
+					({ pokemonFrom, pokemonTo, details }, index) => (
+						<EvolutionChainItem
+							key={index}
+							pokemonFrom={pokemonFrom}
+							pokemonTo={pokemonTo}
+							details={details}
+						/>
+					)
+				)}
+			</div>
 		</TabPanel>
 	)
 }

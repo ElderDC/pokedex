@@ -18,11 +18,11 @@ const EvolutionChainTooltipContent = (
 	const { trigger, details } = props
 
 	return (
-		<div className='space-y-2'>
+		<div className='space-y-2 w-52'>
 			<div>
 				<Text>{trigger.title}</Text>
 			</div>
-			<div className='w-52'>
+			<div>
 				<Text>{trigger.description}</Text>
 			</div>
 			{details
@@ -34,12 +34,11 @@ const EvolutionChainTooltipContent = (
 								{item.title}: {JSON.stringify(item.value)}
 							</Text>
 						</div>
-						<div className='w-52'>
+						<div>
 							<Text>{item.description}</Text>
 						</div>
 					</>
-				))
-			}
+				))}
 		</div>
 	)
 }

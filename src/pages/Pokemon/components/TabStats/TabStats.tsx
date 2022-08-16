@@ -3,7 +3,7 @@ import { PokemonStat } from 'src/models/pokemon.model'
 import TabPanel from 'src/components/ui/atoms/TabPanel'
 import StatItem from 'src/pages/Pokemon/components/StatItem'
 
-type TabStatsProps = {
+interface TabStatsProps {
 	value: number | string
 	stats: PokemonStat[]
 }

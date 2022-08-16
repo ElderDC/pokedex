@@ -3,7 +3,8 @@ import { createPokemonAdapter } from 'src/adapters/pokemon.adapter'
 import { Pokemon } from 'src/models/pokemon.model'
 import { getPokemon } from 'src/services/pokemon.service'
 
-export function useGetPokemon(pokemon: string): [Pokemon, boolean] {
+export function useGetPokemon(pokemon: string): [Pokemon, boolean, boolean] {
+	const [hasError, setHasError] = useState<boolean>(false)
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [pokemonData, setPokemonData] = useState<Pokemon>({} as Pokemon)
 
@@ -11,9 +12,9 @@ export function useGetPokemon(pokemon: string): [Pokemon, boolean] {
 		getPokemon(pokemon)
 			.then((data) => createPokemonAdapter(data))
 			.then((data) => setPokemonData(data))
-			.catch((error) => console.log(error))
+			.catch(() => setHasError(true))
 			.finally(() => setIsLoading(false))
 	}, [pokemon])
 
-	return [pokemonData, isLoading]
+	return [pokemonData, isLoading, hasError]
 }

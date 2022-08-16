@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-type DividerProps = {
+interface DividerProps {
 	children?: undefined | React.ReactNode | React.ReactNode[]
 	className?: string
 	horizontal?: boolean

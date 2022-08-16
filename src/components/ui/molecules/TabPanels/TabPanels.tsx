@@ -96,4 +96,4 @@ const TabPanels = (props: TabPanelsProps) => {
 	)
 }
 
-export default React.memo(TabPanels)
+export default TabPanels

@@ -9,7 +9,7 @@ import Tooltip from 'src/components/ui/atoms/Tooltip'
 import EvolutionChainTooltipContent from 'src/pages/Pokemon/components/EvolutionChainTooltipContent'
 import { getEvolutionDetailData, getEvolutionTriggerData } from 'src/utilities'
 
-type EvolutionChainProps = {
+interface EvolutionChainProps {
 	details: PokemonEvolutionDetails[]
 }
 
