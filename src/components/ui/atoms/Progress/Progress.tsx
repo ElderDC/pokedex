@@ -26,14 +26,22 @@ const Progress = (props: ProgressProps) => {
 	const [progressValue, setprogressValue] = useState(0)
 
 	const progressClass = classNames(bgColor, className, {
+		relative: true,
 		'h-2': true,
 		'w-full': true,
 		'overflow-hidden': true,
 		'rounded-full': rounded,
 	})
-	const progressBarClass = classNames(color, 'h-full')
-	const progressBarStyle = {
-		width: `${progressValue}%`,
+	const progressBarClass = classNames(color, 'h-full', {
+		'animate-indeterminate-short-ltr': indeterminate,
+		'w-1/2': indeterminate,
+		absolute: indeterminate,
+	})
+
+	const variants = {
+		initial: indeterminate ? {} : { width: 0 },
+		animate: indeterminate ? {} : { width: `${progressValue}%` },
+		exit: { opacity: 0, scale: 1 },
 	}
 
 	useEffect(() => {
@@ -43,8 +51,9 @@ const Progress = (props: ProgressProps) => {
 	return (
 		<div className={progressClass}>
 			<motion.div
-				initial={{ width: 0 }}
-				animate={progressBarStyle}
+				variants={variants}
+				initial='initial'
+				animate='animate'
 				transition={{ duration: 0.5 }}
 				className={progressBarClass}
 			></motion.div>

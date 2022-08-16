@@ -33,12 +33,19 @@ module.exports = {
 						opacity: '0',
 					},
 				},
+				'indeterminate-short-ltr': {
+					'0%': { left: '-100%', right: '100%' },
+					'60%': { left: '107%', right: '-8%' },
+					to: { left: '107%', right: '-8%' },
+				},
 			},
 			animation: {
 				ripple: 'ripple 300ms ease-in',
 				'spin-fast': 'spin 1s linear infinite',
 				spin: 'spin 3s linear infinite',
 				'spin-slow': 'spin 5s linear infinite',
+				'indeterminate-short-ltr':
+					'indeterminate-short-ltr 2s ease-out infinite',
 			},
 		},
 	},

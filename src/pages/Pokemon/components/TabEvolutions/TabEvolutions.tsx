@@ -57,10 +57,8 @@ const TabEvolutions = (props: TabEvolutionsProps) => {
 					Evolution chain
 				</Text>
 			</div>
-			<div className='space-y-12'>
-				{formatedEvolutionChain.length < 1 && (
-					<Text>No se encontraron evoluciones</Text>
-				)}
+			<div className='space-y-12 text-center'>
+				{formatedEvolutionChain.length < 1 && <Text>No evolutions found</Text>}
 				{formatedEvolutionChain.map(
 					({ pokemonFrom, pokemonTo, details }, index) => (
 						<EvolutionChainItem

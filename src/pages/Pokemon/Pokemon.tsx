@@ -120,7 +120,7 @@ const PokemonDetail = () => {
 							/>
 						</figure>
 						<figure className='absolute pointer-events-none z-0'>
-							<PokeballIcon className='w-80 h-80 fill-white' />
+							<PokeballIcon className='animate-spin-slow w-80 h-80 fill-white' />
 						</figure>
 					</div>
 				</div>
