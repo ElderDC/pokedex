@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import Ripple from 'src/components/ui/atoms/Ripple'
-import Text from 'src/components/ui/atoms/Text'
+import Ripple from '@/components/ui/atoms/Ripple'
+import Text from '@/components/ui/atoms/Text'
 
 const noop = (): false => {
 	return false

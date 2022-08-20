@@ -1,5 +1,5 @@
-import { PokemonSpecies } from 'src/models/pokemon.model'
-import { getPathnameArrayFromUrl } from 'src/utilities'
+import { PokemonSpecies } from '@/models/pokemon.model'
+import { getPathnameArrayFromUrl } from '@/utilities'
 
 export const createSpeciesAdapter = (data: any = {}): PokemonSpecies => {
 	const evolutionChainIdString = getPathnameArrayFromUrl(

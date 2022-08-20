@@ -1,19 +1,19 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useGetPokemon } from '../../hooks/useGetPokemon'
 import {
 	getPokemonIdFormated,
 	getPokemonTypeBackground,
 	replaceRouteParams,
-} from 'src/utilities'
-import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
-import Babge from 'src/components/ui/atoms/Babge'
-import Card from 'src/components/ui/atoms/Card'
-import CardBody from 'src/components/ui/atoms/CardBody'
-import Ripple from 'src/components/ui/atoms/Ripple'
-import Text from 'src/components/ui/atoms/Text'
-import PokemonCardLoading from '../PokemonCardLoading'
-import { PublicRoutes } from 'src/models/routes.model'
+} from '@/utilities'
+import { ReactComponent as PokeballIcon } from '@/assets/svg/pokeball.svg'
+import Babge from '@/components/ui/atoms/Babge'
+import Card from '@/components/ui/atoms/Card'
+import CardBody from '@/components/ui/atoms/CardBody'
+import Ripple from '@/components/ui/atoms/Ripple'
+import Text from '@/components/ui/atoms/Text'
+import { useGetPokemon } from '@/pages/Home/hooks/useGetPokemon'
+import PokemonCardLoading from '@/pages/Home/components/PokemonCardLoading'
+import { PublicRoutes } from '@/models/routes.model'
 
 interface PokemonCardProps {
 	pokemon: string

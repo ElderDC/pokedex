@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { useOnScreen } from 'src/hooks'
+import { useOnScreen } from '@/hooks'
 
 interface VirtualScrollProps {
 	children: ReactNode

@@ -1,4 +1,4 @@
-import { PokemonType } from 'src/models/pokemon.model'
+import { PokemonType } from '@/models/pokemon.model'
 
 export const getPokemonTypeBackground = (type: PokemonType): string => {
 	const typeOptions: Record<PokemonType, string> = {

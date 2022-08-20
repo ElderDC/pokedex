@@ -1,4 +1,4 @@
-import Text from 'src/components/ui/atoms/Text'
+import Text from '@/components/ui/atoms/Text'
 
 type EvolutionChainTooltipContentProps = {
 	trigger: {

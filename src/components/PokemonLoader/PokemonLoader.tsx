@@ -1,6 +1,6 @@
 import { LegacyRef } from 'react'
 import classNames from 'classnames'
-import PokeballIcon from 'src/assets/svg/pokeball.svg'
+import PokeballIcon from '@/assets/svg/pokeball.svg'
 
 interface PokemonLoaderProps {
 	loading: boolean

@@ -1,6 +1,6 @@
-import { Pokemon, PokemonEvolutionDetails } from 'src/models/pokemon.model'
-import EvolutionChainCard from '../EvolutionChainCard'
-import EvolutionChainDivider from '../EvolutionChainDivider'
+import { Pokemon, PokemonEvolutionDetails } from '@/models/pokemon.model'
+import EvolutionChainCard from '@/pages/Pokemon/components/EvolutionChainCard'
+import EvolutionChainDivider from '@/pages/Pokemon/components/EvolutionChainDivider'
 
 interface EvolutionChainProps {
 	pokemonFrom: Pokemon

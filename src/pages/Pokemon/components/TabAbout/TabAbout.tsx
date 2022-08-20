@@ -1,6 +1,6 @@
-import { Pokemon, PokemonSpecies } from 'src/models/pokemon.model'
-import TabPanel from 'src/components/ui/atoms/TabPanel'
-import Text from 'src/components/ui/atoms/Text'
+import { Pokemon, PokemonSpecies } from '@/models/pokemon.model'
+import TabPanel from '@/components/ui/atoms/TabPanel'
+import Text from '@/components/ui/atoms/Text'
 
 type TabAboutProps = {
 	value: number | string

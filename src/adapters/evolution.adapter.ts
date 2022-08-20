@@ -1,4 +1,4 @@
-import { PokemonEvolution } from 'src/models/pokemon.model'
+import { PokemonEvolution } from '@/models/pokemon.model'
 
 export const createEvolutionChainAdapter = (data: any): PokemonEvolution => {
 	const { species, evolves_to: evolves, evolution_details: details } = data

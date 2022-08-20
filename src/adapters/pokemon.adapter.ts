@@ -1,4 +1,4 @@
-import { SimplePokemon, Pokemon } from 'src/models/pokemon.model'
+import { SimplePokemon, Pokemon } from '@/models/pokemon.model'
 
 export const createSimplePokemonAdapter = (data: any): SimplePokemon => {
 	return {

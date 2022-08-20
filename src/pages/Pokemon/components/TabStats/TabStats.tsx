@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { PokemonStat } from 'src/models/pokemon.model'
-import TabPanel from 'src/components/ui/atoms/TabPanel'
-import StatItem from 'src/pages/Pokemon/components/StatItem'
+import { PokemonStat } from '@/models/pokemon.model'
+import TabPanel from '@/components/ui/atoms/TabPanel'
+import StatItem from '@/pages/Pokemon/components/StatItem'
 
 interface TabStatsProps {
 	value: number | string

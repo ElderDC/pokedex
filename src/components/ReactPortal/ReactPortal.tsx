@@ -1,6 +1,6 @@
 import { ReactNode, useLayoutEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { createWrapperAndAppendToBody } from 'src/utilities'
+import { createWrapperAndAppendToBody } from '@/utilities'
 
 interface ReactPortalProps {
 	children: ReactNode

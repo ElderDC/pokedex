@@ -2,10 +2,10 @@ import {
 	Pokemon,
 	PokemonEvolution,
 	PokemonEvolutionDetails,
-} from 'src/models/pokemon.model'
-import TabPanel from 'src/components/ui/atoms/TabPanel'
-import Text from 'src/components/ui/atoms/Text'
-import EvolutionChainItem from 'src/pages/Pokemon/components/EvolutionChainItem'
+} from '@/models/pokemon.model'
+import TabPanel from '@/components/ui/atoms/TabPanel'
+import Text from '@/components/ui/atoms/Text'
+import EvolutionChainItem from '@/pages/Pokemon/components/EvolutionChainItem'
 
 interface TabEvolutionsProps {
 	value: number | string

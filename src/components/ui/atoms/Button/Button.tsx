@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import Ripple from 'src/components/ui/atoms/Ripple'
+import Ripple from '@/components/ui/atoms/Ripple'
 import { Link, To } from 'react-router-dom'
 
 type Handler = (_event: React.MouseEvent) => void

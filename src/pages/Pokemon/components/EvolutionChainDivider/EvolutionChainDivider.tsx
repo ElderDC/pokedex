@@ -1,13 +1,13 @@
 import {
 	EvolutionDetail,
 	PokemonEvolutionDetails,
-} from 'src/models/pokemon.model'
-import Avatar from 'src/components/ui/atoms/Avatar'
-import Divider from 'src/components/ui/atoms/Divider'
-import AvatarGroup from 'src/components/ui/atoms/AvatarGroup'
-import Tooltip from 'src/components/ui/atoms/Tooltip'
-import EvolutionChainTooltipContent from 'src/pages/Pokemon/components/EvolutionChainTooltipContent'
-import { getEvolutionDetailData, getEvolutionTriggerData } from 'src/utilities'
+} from '@/models/pokemon.model'
+import Avatar from '@/components/ui/atoms/Avatar'
+import Divider from '@/components/ui/atoms/Divider'
+import AvatarGroup from '@/components/ui/atoms/AvatarGroup'
+import Tooltip from '@/components/ui/atoms/Tooltip'
+import EvolutionChainTooltipContent from '@/pages/Pokemon/components/EvolutionChainTooltipContent'
+import { getEvolutionDetailData, getEvolutionTriggerData } from '@/utilities'
 
 interface EvolutionChainProps {
 	details: PokemonEvolutionDetails[]

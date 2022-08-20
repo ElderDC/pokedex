@@ -1,4 +1,4 @@
-import AnimatePage from 'src/components/AnimatePage'
+import AnimatePage from '@/components/AnimatePage'
 
 const Error404 = () => {
 	return <AnimatePage>NOT FOUND</AnimatePage>

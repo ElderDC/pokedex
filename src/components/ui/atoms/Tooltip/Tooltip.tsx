@@ -7,9 +7,9 @@ import React, {
 } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import classNames from 'classnames'
-import ReactPortal from 'src/components/ReactPortal'
-import useOnHover from 'src/hooks/useOnHover'
-import { useWindowSize } from 'src/hooks'
+import ReactPortal from '@/components/ReactPortal'
+import useOnHover from '@/hooks/useOnHover'
+import { useWindowSize } from '@/hooks'
 
 interface TooltipProps {
 	bgColor?: string

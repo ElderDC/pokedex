@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import classNames from 'classnames'
-import ReactPortal from 'src/components/ReactPortal'
-import { useOnClickOutside, useOnHover, useWindowSize } from 'src/hooks'
+import ReactPortal from '@/components/ReactPortal'
+import { useOnClickOutside, useOnHover, useWindowSize } from '@/hooks'
 
 const noop = (): false => {
 	return false

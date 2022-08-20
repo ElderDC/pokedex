@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { PublicRoutes } from './models/routes.model'
-import Progress from './components/ui/atoms/Progress'
+import { PublicRoutes } from '@/models/routes.model'
+import Progress from '@/components/ui/atoms/Progress'
 
-const Home = lazy(() => import('./pages/Home/Home'))
-const Pokemon = lazy(() => import('./pages/Pokemon/Pokemon'))
-const Error404 = lazy(() => import('./pages/Error404/Error404'))
+const Home = lazy(() => import('@/pages/Home/Home'))
+const Pokemon = lazy(() => import('@/pages/Pokemon/Pokemon'))
+const Error404 = lazy(() => import('@/pages/Error404/Error404'))
 
 function App() {
 	const location = useLocation()

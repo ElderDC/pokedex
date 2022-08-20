@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from 'react'
-import { useOnScreen } from 'src/hooks'
+import { useOnScreen } from '@/hooks'
 
 interface InfiniteScrollProps<T> {
 	listItems: T[]

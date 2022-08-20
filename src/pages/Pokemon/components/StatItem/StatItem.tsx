@@ -1,6 +1,6 @@
-import Progress from 'src/components/ui/atoms/Progress'
-import Text from 'src/components/ui/atoms/Text'
-import { getColorStat } from 'src/utilities'
+import Progress from '@/components/ui/atoms/Progress'
+import Text from '@/components/ui/atoms/Text'
+import { getColorStat } from '@/utilities'
 
 interface StatItemProps {
 	max?: number

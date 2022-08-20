@@ -1,5 +1,5 @@
-import Card from 'src/components/ui/atoms/Card'
-import CardBody from 'src/components/ui/atoms/CardBody'
+import Card from '@/components/ui/atoms/Card'
+import CardBody from '@/components/ui/atoms/CardBody'
 
 const PokemonCardLoading = () => {
 	return (

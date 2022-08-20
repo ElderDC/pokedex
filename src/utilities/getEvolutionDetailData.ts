@@ -1,4 +1,4 @@
-import { EvolutionDetail } from 'src/models/pokemon.model'
+import { EvolutionDetail } from '@/models/pokemon.model'
 
 export const getEvolutionDetailData = (detail: EvolutionDetail) => {
 	const detailOptions = {

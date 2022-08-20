@@ -1,9 +1,9 @@
-import { Pokemon } from 'src/models/pokemon.model'
-import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
-import Text from 'src/components/ui/atoms/Text'
+import { Pokemon } from '@/models/pokemon.model'
+import { ReactComponent as PokeballIcon } from '@/assets/svg/pokeball.svg'
+import Text from '@/components/ui/atoms/Text'
 import { Link } from 'react-router-dom'
-import { PublicRoutes } from 'src/models/routes.model'
-import { replaceRouteParams } from 'src/utilities'
+import { PublicRoutes } from '@/models/routes.model'
+import { replaceRouteParams } from '@/utilities'
 
 interface EvolutionChainCardProps {
 	pokemon: Pokemon

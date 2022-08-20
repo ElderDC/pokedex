@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import Text from 'src/components/ui/atoms/Text'
+import Text from '@/components/ui/atoms/Text'
 
 type BabgeSize = 'xs' | 'sm' | 'md' | 'lg'
 

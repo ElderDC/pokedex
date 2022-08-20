@@ -1,11 +1,11 @@
-import { ReactComponent as PokeballIcon } from 'src/assets/svg/pokeball.svg'
-import { ReactComponent as CriticalHitIcon } from 'src/assets/svg/EvolutionTrigger/critical-hit.svg'
-import { ReactComponent as LevelUpIcon } from 'src/assets/svg/EvolutionTrigger/level-up.svg'
-import { ReactComponent as TradeIcon } from 'src/assets/svg/EvolutionTrigger/trade.svg'
-import { ReactComponent as UseItemIcon } from 'src/assets/svg/EvolutionTrigger/use-item.svg'
-import { ReactComponent as TakeDamageIcon } from 'src/assets/svg/EvolutionTrigger/take-damage.svg'
-import { ReactComponent as TowerIcon } from 'src/assets/svg/EvolutionTrigger/tower.svg'
-import { EvolutionTrigger } from 'src/models/pokemon.model'
+import { ReactComponent as PokeballIcon } from '@/assets/svg/pokeball.svg'
+import { ReactComponent as CriticalHitIcon } from '@/assets/svg/EvolutionTrigger/critical-hit.svg'
+import { ReactComponent as LevelUpIcon } from '@/assets/svg/EvolutionTrigger/level-up.svg'
+import { ReactComponent as TradeIcon } from '@/assets/svg/EvolutionTrigger/trade.svg'
+import { ReactComponent as UseItemIcon } from '@/assets/svg/EvolutionTrigger/use-item.svg'
+import { ReactComponent as TakeDamageIcon } from '@/assets/svg/EvolutionTrigger/take-damage.svg'
+import { ReactComponent as TowerIcon } from '@/assets/svg/EvolutionTrigger/tower.svg'
+import { EvolutionTrigger } from '@/models/pokemon.model'
 
 export const getEvolutionTriggerData = (trigger: EvolutionTrigger) => {
 	const triggerOptions = {

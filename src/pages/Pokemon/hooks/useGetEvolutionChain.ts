@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import {
 	createEvolutionChainAdapter,
 	createListEvolutionChainAdapter,
-} from 'src/adapters/evolution.adapter'
-import { createPokemonAdapter } from 'src/adapters/pokemon.adapter'
-import { Pokemon, PokemonEvolution } from 'src/models/pokemon.model'
-import { getEvolutionChain, getPokemon } from 'src/services/pokemon.service'
+} from '@/adapters/evolution.adapter'
+import { createPokemonAdapter } from '@/adapters/pokemon.adapter'
+import { Pokemon, PokemonEvolution } from '@/models/pokemon.model'
+import { getEvolutionChain, getPokemon } from '@/services/pokemon.service'
 
 export function useGetEvolutionChain(
 	payload: number | null
