@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { PublicRoutes } from '@/models/routes.model'
@@ -10,16 +10,6 @@ const Error404 = lazy(() => import('@/pages/Error404/Error404'))
 
 function App() {
 	const location = useLocation()
-
-	const testEndpoint = () => {
-		fetch('https://thatwordleapi.azurewebsites.net/get/')
-			.then(e => e.json())
-			.then(e => console.log(e))
-	}
-
-	useEffect(() => {
-		testEndpoint()
-	}, [])
 
 	return (
 		<Suspense
